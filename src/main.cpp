@@ -2,19 +2,13 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 #include "VertexShader.h"
+#include "FragmentShader.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow* window);
 
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
-
-const char* fragmentShaderSource = "#version 330 core\n"
-"out vec4 FragColor;\n"
-"void main()\n"
-"{\n"
-"   FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
-"}\n\0";
 
 int main()
 {
@@ -46,27 +40,20 @@ int main()
         return -1;
     }
 
-    VertexShader vertexShaderClass;
-    unsigned int vertexShader = vertexShaderClass.CreateVertexShader();
-    // fragment shader
-    unsigned int fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-    glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
-    glCompileShader(fragmentShader);
-    // check for shader compile errors
-    int success;
-    char infoLog[512];
-    glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &success);
-    if (!success)
-    {
-        glGetShaderInfoLog(fragmentShader, 512, NULL, infoLog);
-        std::cout << "ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n" << infoLog << std::endl;
-    }
+    VertexShader* vertexShaderClass = new VertexShader();
+    unsigned int vertexShader = vertexShaderClass->CreateVertexShader();
+    
+    FragmentShader* fragmentShaderClass = new FragmentShader();
+    unsigned int fragmentShader = fragmentShaderClass->CreateFragmentShader();
+
     // link shaders
     unsigned int shaderProgram = glCreateProgram();
     glAttachShader(shaderProgram, vertexShader);
     glAttachShader(shaderProgram, fragmentShader);
     glLinkProgram(shaderProgram);
     // check for linking errors
+    int success;
+    char infoLog[512];
     glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
     if (!success) {
         glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
@@ -74,6 +61,8 @@ int main()
     }
     glDeleteShader(vertexShader);
     glDeleteShader(fragmentShader);
+    delete vertexShaderClass;
+    delete fragmentShaderClass;
 
 
     // set up vertex data (and buffer(s)) and configure vertex attributes

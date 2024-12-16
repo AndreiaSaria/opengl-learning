@@ -20,12 +20,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="includes\glad\src\glad.c" />
+    <ClCompile Include="src\FragmentShader.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\VertexShader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes\glad\include\glad\glad.h" />
     <ClInclude Include="includes\glad\include\KHR\khrplatform.h" />
+    <ClInclude Include="src\FragmentShader.h" />
     <ClInclude Include="src\VertexShader.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
