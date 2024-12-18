@@ -41,6 +41,7 @@ int main()
     }
 
     Shader ourShader("src/Shaders/Shader.vs", "src/Shaders/Shader.fs");
+    ourShader.SetFloat("myOffset", 500);
 
     // set up vertex data (and buffer(s)) and configure vertex attributes
     float vertices[] = {
