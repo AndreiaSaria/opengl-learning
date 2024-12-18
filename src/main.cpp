@@ -41,7 +41,7 @@ int main()
     }
 
     Shader ourShader("src/Shaders/Shader.vs", "src/Shaders/Shader.fs");
-    ourShader.SetFloat("myOffset", 500);
+
 
     // set up vertex data (and buffer(s)) and configure vertex attributes
     float vertices[] = {
@@ -92,6 +92,7 @@ int main()
         glClear(GL_COLOR_BUFFER_BIT);
 
         ourShader.Use();
+        ourShader.SetFloat("myOffset", 0.5);
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
