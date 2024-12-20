@@ -20,17 +20,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="includes\glad\src\glad.c" />
+    <ClCompile Include="includes\stb_image_implementation.cpp" />
     <ClCompile Include="src\Shader.cpp" />
-    <ClCompile Include="src\FragmentShader.cpp" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\VertexShader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes\glad\include\glad\glad.h" />
     <ClInclude Include="includes\glad\include\KHR\khrplatform.h" />
+    <ClInclude Include="includes\stb_image.h" />
     <ClInclude Include="src\Shader.h" />
-    <ClInclude Include="src\FragmentShader.h" />
-    <ClInclude Include="src\VertexShader.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
